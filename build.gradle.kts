@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "io.github.xiaozhuai"
-version = "1.0.1"
+version = "1.0.3"
 
 repositories {
     mavenCentral()
@@ -12,9 +12,9 @@ repositories {
 
 intellij {
     version.set("2021.2")
-    type.set("IC") // Target IDE Platform
+    type.set("IC")
 
-    plugins.set(listOf(/* Plugin Dependencies */))
+    plugins.set(listOf())
 }
 
 tasks {
