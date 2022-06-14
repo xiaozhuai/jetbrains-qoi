@@ -13,6 +13,7 @@ import javax.imageio.metadata.IIOMetadata;
 import javax.imageio.spi.ImageReaderSpi;
 import javax.imageio.stream.ImageInputStream;
 import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
 import java.awt.image.DataBufferInt;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -74,7 +75,7 @@ public class QOIImageReaderSpi extends ImageReaderSpi {
     }
 
     @Override
-    public @NotNull ImageReader createReaderInstance(Object extension) throws IOException {
+    public @NotNull ImageReader createReaderInstance(Object extension) {
         return new QOIReader(this);
     }
 
@@ -102,7 +103,7 @@ public class QOIImageReaderSpi extends ImageReaderSpi {
             super.setInput(input, seekForwardOnly, ignoreMetadata);
             try {
                 byte[] bytes = readStreamFully((ImageInputStream) input);
-                image = QOIUtil.readImage(new ByteArrayInputStream(bytes), 4);
+                image = QOIUtil.readImage(new ByteArrayInputStream(bytes));
             } catch (Exception e) {
                 image = null;
             }
@@ -175,22 +176,34 @@ public class QOIImageReaderSpi extends ImageReaderSpi {
                 throw new IOException(UNABLE_TO_READ_QOI_IMAGE);
             }
             byte[] pixels = image.getPixelData();
-            // rgba to argb
-            for (int i = 0; i < image.getWidth() * image.getHeight(); ++i) {
-                byte alpha = pixels[i * 4 + 3];
-                pixels[i * 4 + 3] = pixels[i * 4 + 2];
-                pixels[i * 4 + 2] = pixels[i * 4 + 1];
-                pixels[i * 4 + 1] = pixels[i * 4];
-                pixels[i * 4] = alpha;
+
+            if (image.getChannels() == 4) {
+                // rgba to argb
+                for (int i = 0; i < image.getWidth() * image.getHeight(); ++i) {
+                    byte alpha = pixels[i * 4 + 3];
+                    pixels[i * 4 + 3] = pixels[i * 4 + 2];
+                    pixels[i * 4 + 2] = pixels[i * 4 + 1];
+                    pixels[i * 4 + 1] = pixels[i * 4];
+                    pixels[i * 4] = alpha;
+                }
+                @SuppressWarnings("UndesirableClassUsage")
+                BufferedImage bi = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
+                final int[] a = ((DataBufferInt) bi.getRaster().getDataBuffer()).getData();
+                IntBuffer buf = ByteBuffer.wrap(pixels).asIntBuffer();
+                assert a.length == buf.remaining();
+                buf.get(a);
+                return bi;
+            } else if (image.getChannels() == 3) {
+                @SuppressWarnings("UndesirableClassUsage")
+                BufferedImage bi = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
+                final byte[] a = ((DataBufferByte) bi.getRaster().getDataBuffer()).getData();
+                ByteBuffer buf = ByteBuffer.wrap(pixels);
+                assert a.length == buf.remaining();
+                buf.get(a);
+                return bi;
+            } else {
+                throw new IOException(UNABLE_TO_READ_QOI_IMAGE);
             }
-            @SuppressWarnings("UndesirableClassUsage")
-            BufferedImage bi = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
-            // Copy the bytes read above to the image's data buffer.
-            final int[] a = ((DataBufferInt) bi.getRaster().getDataBuffer()).getData();
-            IntBuffer intBuf = ByteBuffer.wrap(pixels).asIntBuffer();
-            assert a.length == intBuf.remaining();
-            intBuf.get(a);
-            return bi;
         }
     }
 }
