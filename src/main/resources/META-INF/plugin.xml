@@ -1,0 +1,13 @@
+<idea-plugin>
+    <id>io.github.xiaozhuai.jetbrains-qoi</id>
+    <name>QOI Support</name>
+    <vendor email="798047000@qq.com" url="https://github.com/xiaozhuai/jetbrains-qoi">xiaozhuai</vendor>
+    <description><![CDATA[
+    <p>Allows viewing images in the <a href="https://qoiformat.org/">QOI</a> format in the IDE.</p>
+  ]]></description>
+    <depends>com.intellij.modules.lang</depends>
+    <extensions defaultExtensionNs="com.intellij">
+        <fileType name="Image" extensions="qoi"/>
+        <applicationService serviceImplementation="io.github.xiaozhuai.jetbrains.qoi.QOIMetadataRegistrar" preload="true"/>
+    </extensions>
+</idea-plugin>
