@@ -1,13 +1,16 @@
 package io.github.xiaozhuai.jetbrains.qoi;
 
-import com.intellij.openapi.diagnostic.Logger;
+import com.intellij.openapi.application.PreloadingActivity;
+import com.intellij.openapi.progress.ProgressIndicator;
+import org.jetbrains.annotations.NotNull;
 
 import javax.imageio.spi.IIORegistry;
 import javax.imageio.spi.ImageReaderSpi;
 import javax.imageio.spi.ImageWriterSpi;
 
-public class QOIMetadataRegistrar {
-    private QOIMetadataRegistrar() {
+public class QOIPreloadingActivity extends PreloadingActivity {
+    @Override
+    public void preload(@NotNull ProgressIndicator indicator) {
         ensureQoiRegistered();
     }
 

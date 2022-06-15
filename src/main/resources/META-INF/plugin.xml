@@ -4,10 +4,16 @@
     <vendor email="798047000@qq.com" url="https://github.com/xiaozhuai">xiaozhuai</vendor>
     <description><![CDATA[
     <p>Allows viewing images in the <a href="https://qoiformat.org/">QOI</a> format in the IDE.</p>
-  ]]></description>
+    ]]></description>
+    <change-notes><![CDATA[
+    <ul>
+        <li><b>1.0.5</b> Bug fix.</li>
+        <li><b>1.0.4</b> Correct display channels in image.</li>
+    </ul>
+    ]]></change-notes>
     <depends>com.intellij.modules.lang</depends>
     <extensions defaultExtensionNs="com.intellij">
         <fileType name="Image" extensions="qoi"/>
-        <applicationService serviceImplementation="io.github.xiaozhuai.jetbrains.qoi.QOIMetadataRegistrar" preload="true"/>
+        <preloadingActivity implementation="io.github.xiaozhuai.jetbrains.qoi.QOIPreloadingActivity"/>
     </extensions>
 </idea-plugin>
