@@ -1,4 +1,4 @@
-<idea-plugin>
+<idea-plugin require-restart="true">
     <id>io.github.xiaozhuai.jetbrains-qoi</id>
     <name>QOI Support</name>
     <vendor email="798047000@qq.com" url="https://github.com/xiaozhuai">xiaozhuai</vendor>
@@ -7,7 +7,7 @@
     ]]></description>
     <change-notes><![CDATA[
     <ul>
-        <li><b>1.0.5</b> Bug fix.</li>
+        <li><b>1.0.6</b> Bug fix.</li>
         <li><b>1.0.4</b> Correct display channels in image.</li>
     </ul>
     ]]></change-notes>
