@@ -7,6 +7,7 @@
     ]]></description>
     <change-notes><![CDATA[
     <ul>
+        <li><b>1.0.8</b> Fix 24bit color image RB channel.</li>
         <li><b>1.0.6</b> Bug fix.</li>
         <li><b>1.0.4</b> Correct display channels in image.</li>
     </ul>

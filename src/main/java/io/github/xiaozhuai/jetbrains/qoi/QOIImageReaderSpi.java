@@ -194,6 +194,12 @@ public class QOIImageReaderSpi extends ImageReaderSpi {
                 buf.get(a);
                 return bi;
             } else if (image.getChannels() == 3) {
+                // swap r b channel
+                for (int i = 0; i < image.getWidth() * image.getHeight(); ++i) {
+                    byte tmp = pixels[i * 3 + 2];
+                    pixels[i * 3 + 2] = pixels[i * 3];
+                    pixels[i * 3] = tmp;
+                }
                 @SuppressWarnings("UndesirableClassUsage")
                 BufferedImage bi = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
                 final byte[] a = ((DataBufferByte) bi.getRaster().getDataBuffer()).getData();
