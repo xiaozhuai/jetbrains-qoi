@@ -7,6 +7,7 @@
     ]]></description>
     <change-notes><![CDATA[
     <ul>
+        <li><b>1.1.2</b> Support 231.*</li>
         <li><b>1.1.1</b> Support 223.*</li>
         <li><b>1.1.0</b> 1. Fix 24bit color image RB channel.<br>2. Support JetBrains Gateway</li>
         <li><b>1.0.6</b> Bug fix.</li>
@@ -16,6 +17,6 @@
     <depends>com.intellij.modules.platform</depends>
     <extensions defaultExtensionNs="com.intellij">
         <fileType name="Image" extensions="qoi"/>
-        <preloadingActivity implementation="io.github.xiaozhuai.jetbrains.qoi.QOIPreloadingActivity"/>
+        <applicationService serviceImplementation="io.github.xiaozhuai.jetbrains.qoi.QOIMetadataRegistrar" preload="true"/>
     </extensions>
 </idea-plugin>
