@@ -7,9 +7,16 @@
     ]]></description>
     <change-notes><![CDATA[
     <ul>
+        <li><b>1.1.3</b> Support 232.*</li>
         <li><b>1.1.2</b> Support 231.*</li>
         <li><b>1.1.1</b> Support 223.*</li>
-        <li><b>1.1.0</b> 1. Fix 24bit color image RB channel.<br>2. Support JetBrains Gateway</li>
+        <li>
+            <b>1.1.0</b>
+            <ul>
+                <li>Fix 24bit color image RB channel.</li>
+                <li>Support JetBrains Gateway</li>
+            </ul>
+        </li>
         <li><b>1.0.6</b> Bug fix.</li>
         <li><b>1.0.4</b> Correct display channels in image.</li>
     </ul>
