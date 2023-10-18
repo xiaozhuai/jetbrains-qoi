@@ -7,6 +7,11 @@
     ]]></description>
     <change-notes><![CDATA[
     <ul>
+        <li>
+        <b>1.1.4</b>
+        Support 233.*<br/>
+        Support dynamic loading without restarting the IDE<br/>
+        </li>
         <li><b>1.1.3</b> Support 232.*</li>
         <li><b>1.1.2</b> Support 231.*</li>
         <li><b>1.1.1</b> Support 223.*</li>
