@@ -22,8 +22,11 @@
     </ul>
     ]]></change-notes>
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.platform.images</depends>
     <extensions defaultExtensionNs="com.intellij">
         <fileType name="Image" extensions="qoi"/>
-        <applicationService serviceImplementation="io.github.xiaozhuai.jetbrains.qoi.QOIMetadataRegistrar" preload="true"/>
     </extensions>
+    <applicationListeners>
+        <listener class="io.github.xiaozhuai.jetbrains.qoi.QOIMetadataRegistrar" topic="com.intellij.ide.AppLifecycleListener"/>
+    </applicationListeners>
 </idea-plugin>
