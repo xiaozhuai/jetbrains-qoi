@@ -1,4 +1,4 @@
-<idea-plugin require-restart="true">
+<idea-plugin >
     <id>io.github.xiaozhuai.jetbrains-qoi</id>
     <name>QOI Support</name>
     <vendor email="798047000@qq.com" url="https://github.com/xiaozhuai">xiaozhuai</vendor>
