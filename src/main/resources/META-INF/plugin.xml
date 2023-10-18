@@ -1,4 +1,4 @@
-<idea-plugin require-restart="true">
+<idea-plugin >
     <id>io.github.xiaozhuai.jetbrains-qoi</id>
     <name>QOI Support</name>
     <vendor email="798047000@qq.com" url="https://github.com/xiaozhuai">xiaozhuai</vendor>
@@ -7,6 +7,11 @@
     ]]></description>
     <change-notes><![CDATA[
     <ul>
+        <li>
+        <b>1.1.4</b>
+        Support 233.*<br/>
+        Support dynamic loading without restarting the IDE<br/>
+        </li>
         <li><b>1.1.3</b> Support 232.*</li>
         <li><b>1.1.2</b> Support 231.*</li>
         <li><b>1.1.1</b> Support 223.*</li>
@@ -22,8 +27,11 @@
     </ul>
     ]]></change-notes>
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.platform.images</depends>
     <extensions defaultExtensionNs="com.intellij">
         <fileType name="Image" extensions="qoi"/>
-        <applicationService serviceImplementation="io.github.xiaozhuai.jetbrains.qoi.QOIMetadataRegistrar" preload="true"/>
     </extensions>
+    <applicationListeners>
+        <listener class="io.github.xiaozhuai.jetbrains.qoi.QOIMetadataRegistrar" topic="com.intellij.ide.AppLifecycleListener"/>
+    </applicationListeners>
 </idea-plugin>

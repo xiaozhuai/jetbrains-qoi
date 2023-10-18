@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "io.github.xiaozhuai"
-version = "1.1.3"
+version = "1.1.4"
 
 repositories {
     mavenCentral()
@@ -14,7 +14,7 @@ intellij {
     version.set("2021.2")
     type.set("IC")
 
-    plugins.set(listOf())
+    plugins.set(listOf("com.intellij.platform.images"))
 }
 
 tasks {
@@ -23,9 +23,13 @@ tasks {
         targetCompatibility = "11"
     }
 
+    buildSearchableOptions{
+        enabled = false
+    }
+
     patchPluginXml {
         sinceBuild.set("212")
-        untilBuild.set("232.*")
+        untilBuild.set("233.*")
     }
 
     signPlugin {
