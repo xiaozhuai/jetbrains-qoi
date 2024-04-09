@@ -12,7 +12,7 @@ repositories {
 
 intellij {
     version.set("2021.2")
-    type.set("IC")
+    type.set("IU")
 
     plugins.set(listOf("com.intellij.platform.images"))
 }
