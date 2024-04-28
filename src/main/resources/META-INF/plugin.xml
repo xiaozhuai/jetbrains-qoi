@@ -7,6 +7,7 @@
     ]]></description>
     <change-notes><![CDATA[
     <ul>
+        <li><b>1.1.6</b> Use jdk 21</li>
         <li><b>1.1.5</b> Support 241.*</li>
         <li>
             <b>1.1.4</b>

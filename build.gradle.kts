@@ -1,10 +1,10 @@
 plugins {
     id("java")
-    id("org.jetbrains.intellij") version "1.5.2"
+    id("org.jetbrains.intellij") version "1.17.3"
 }
 
 group = "io.github.xiaozhuai"
-version = "1.1.5"
+version = "1.1.6"
 
 repositories {
     mavenCentral()
