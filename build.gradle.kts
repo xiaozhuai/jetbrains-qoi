@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "io.github.xiaozhuai"
-version = "1.1.6"
+version = "1.2.0"
 
 repositories {
     mavenCentral()
@@ -44,6 +44,6 @@ tasks {
 }
 
 dependencies {
-    // !!! Do not forget to change QOIMetadata.QOI_LIBRARY_VERSION when upgrade qoi-java !!!
+    // !!! Do not forget to change QOIPluginConstants.QOI_VERSION when upgrade qoi-java !!!
     implementation("me.saharnooby:qoi-java:1.2.1")
 }
