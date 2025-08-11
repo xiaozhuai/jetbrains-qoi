@@ -7,6 +7,7 @@
     ]]></description>
     <change-notes><![CDATA[
     <ul>
+        <li><b>1.2.4</b> Support 252.*</li>
         <li><b>1.2.3</b> Support 251.*</li>
         <li><b>1.2.2</b> Support 243.*</li>
         <li><b>1.2.1</b> Support 242.*</li>
