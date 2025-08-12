@@ -18,9 +18,6 @@ dependencies {
     implementation("me.saharnooby:qoi-java:1.2.1")
     intellijPlatform {
         create("IU", "2025.2")
-//        create("CL", "2025.2")
-        plugin("PsiViewer:252.23892.248")
-        plugin("com.cursiveclojure.cursive:2025.2-252")
     }
 }
 
@@ -34,8 +31,8 @@ intellijPlatform {
 
 tasks {
     withType<JavaCompile> {
-        sourceCompatibility = "11"
-        targetCompatibility = "11"
+        sourceCompatibility = "21"
+        targetCompatibility = "21"
     }
 
     buildSearchableOptions{
